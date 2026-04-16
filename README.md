@@ -70,9 +70,9 @@ This project covers core cloud fundamentals: compute, networking, IAM, monitorin
                              └──────────────────────────────┘
 ```
 
-> 📐 Full draw.io architecture diagram below and in [`Architecture-diagram.png`](Architecture-diagram.png)
+> 📐 Full draw.io architecture diagram below and in [`Architecture-diagram.png`](docs/Architecture-diagram.png)
 
-![Architecture Diagram](Architecture-diagram.png)
+![Architecture Diagram](docs/Architecture-diagram.png)
 
 ---
 
@@ -179,15 +179,15 @@ python3 check_ec2_status.py
 
 | Screenshot | Description |
 |------------|-------------|
-| ![](ss01-iam-user.png) | IAM user with least-privilege policies |
-| ![](ss03-ec2-running.png) | EC2 instance in running state |
-| ![](ss04-security-group.png) | Security group — SSH locked to My IP |
-| ![](ss05-ebs-encrypted.png) | EBS volume encryption enabled |
-| ![](ss06-nginx-browser.png) | Custom Nginx page live in browser |
-| ![](ss08-cloudwatch-agent.png) | CloudWatch Agent active on EC2 |
-| ![](ss10-cloudwatch-alarm.png) | CloudWatch CPU alarm configured |
-| ![](ss11-sns-confirmed.png) | SNS email subscription confirmed |
-| ![](ss12-boto3-output.png) | Boto3 script output in terminal |
+| ![](docs/ss01-iam-user.png) | IAM user with least-privilege policies |
+| ![](docs/ss03-ec2-running.png) | EC2 instance in running state |
+| ![](docs/ss04-security-group.png) | Security group — SSH locked to My IP |
+| ![](docs/ss05-ebs-encrypted.png) | EBS volume encryption enabled |
+| ![](docs/ss06-nginx-browser.png) | Custom Nginx page live in browser |
+| ![](docs/ss08-cloudwatch-agent.png) | CloudWatch Agent active on EC2 |
+| ![](docs/ss10-cloudwatch-alarm.png) | CloudWatch CPU alarm configured |
+| ![](docs/ss11-sns-confirmed.png) | SNS email subscription confirmed |
+| ![](docs/ss12-boto3-output.png) | Boto3 script output in terminal |
 
 ---
 
