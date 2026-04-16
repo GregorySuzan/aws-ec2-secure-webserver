@@ -25,7 +25,7 @@ This project covers core cloud fundamentals: compute, networking, IAM, monitorin
 
 | Service | Purpose |
 |---------|---------|
-| Amazon EC2 (t2.micro) | Compute — hosts the web server |
+| Amazon EC2 (t3.micro) | Compute — hosts the web server |
 | Amazon Linux 2023 | Operating system (free tier AMI) |
 | Nginx | Web server serving custom HTML page |
 | AWS IAM | Least-privilege user + EC2 instance role |
