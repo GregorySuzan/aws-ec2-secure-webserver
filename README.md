@@ -146,7 +146,7 @@ Create an IAM Role (`ec2-cloudwatch-role`) with `CloudWatchAgentServerPolicy` fo
 ### 3 — Connect & Configure Nginx
 ```bash
 chmod 400 ~/.ssh/ec2-key.pem
-ssh -i ~/.ssh/ec2-key.pem ec2-user@YOUR_PUBLIC_IP
+ssh -i ~/.ssh/ec2-key.pem ec2-user@PUBLIC_IP
 
 sudo dnf update -y
 sudo dnf install nginx -y
