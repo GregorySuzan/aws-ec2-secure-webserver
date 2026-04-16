@@ -15,62 +15,7 @@ This project covers core cloud fundamentals: compute, networking, IAM, monitorin
 ---
 
 ## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    AWS CLOUD (ap-southeast-2)                   │
-│                                                                 │
-│  ┌──────────────────────────────────────────────────────────┐   │
-│  │                     VPC (Default)                        │   │
-│  │                                                          │   │
-│  │   ┌─────────────────────────────────────────────────┐   │   │
-│  │   │           Security Group: web-server-sg          │   │   │
-│  │   │                                                  │   │   │
-│  │   │   Port 22  (SSH)  ◄── My IP only                │   │   │
-│  │   │   Port 80  (HTTP) ◄── 0.0.0.0/0 (public)       │   │   │
-│  │   │                                                  │   │   │
-│  │   │   ┌──────────────────────────────────────────┐  │   │   │
-│  │   │   │       EC2: secure-web-server             │  │   │   │
-│  │   │   │       Amazon Linux 2023 / t2.micro       │  │   │   │
-│  │   │   │                                          │  │   │   │
-│  │   │   │  ┌─────────────┐  ┌──────────────────┐  │  │   │   │
-│  │   │   │  │    Nginx    │  │ CloudWatch Agent  │  │  │   │   │
-│  │   │   │  │  (port 80)  │  │ (CPU/mem/disk)    │  │  │   │   │
-│  │   │   │  └─────────────┘  └──────────┬───────┘  │  │   │   │
-│  │   │   │                              │           │  │   │   │
-│  │   │   │  IAM Role: ec2-cloudwatch-role           │  │   │   │
-│  │   │   │  Policy: CloudWatchAgentServerPolicy     │  │   │   │
-│  │   │   │                                          │  │   │   │
-│  │   │   │  ┌──────────────────────────────────┐   │  │   │   │
-│  │   │   │  │  EBS Volume (8GB gp2)            │   │  │   │   │
-│  │   │   │  │  🔒 Encrypted at rest            │   │  │   │   │
-│  │   │   │  └──────────────────────────────────┘   │  │   │   │
-│  │   │   └──────────────────────────────────────────┘  │   │   │
-│  │   └─────────────────────────────────────────────────┘   │   │
-│  └──────────────────────────────────────────────────────────┘   │
-│                                                                 │
-│  ┌─────────────────┐      ┌────────────────────────────────┐   │
-│  │   CloudWatch    │      │              IAM               │   │
-│  │  Alarm: CPU>70% │      │  User: ec2-project-user        │   │
-│  │  (2x 5min)      │      │  Policies: EC2Full +           │   │
-│  └────────┬────────┘      │             CloudWatchFull     │   │
-│           │               └────────────────────────────────┘   │
-│           ▼                                                     │
-│  ┌─────────────────┐                                           │
-│  │    SNS Topic    │                                           │
-│  │  ec2-cpu-alerts │                                           │
-│  └────────┬────────┘                                           │
-└───────────┼─────────────────────────────────────────────────────┘
-            │
-            ▼
-  ┌──────────────────┐       ┌──────────────────────────────┐
-  │  📧 Email Alert  │       │    💻 Local Ubuntu Machine   │
-  │  (SNS trigger)   │       │  Boto3: check_ec2_status.py  │
-  └──────────────────┘       │  → EC2 state + alarm status  │
-                             └──────────────────────────────┘
-```
-
-> 📐 Full draw.io architecture diagram below and in [`Architecture-diagram.png`](docs/Architecture-diagram.png)
+---
 
 ![Architecture Diagram](docs/Architecture-diagram.png)
 
@@ -107,11 +52,12 @@ This project covers core cloud fundamentals: compute, networking, IAM, monitorin
 ## 📁 Repository Structure
 
 ```
-aws-ec2-secure-webserver/
+aws-secure-web-server/
 ├── check_ec2_status.py          # Boto3 automation script
 ├── cloudwatch-agent-config.json # CloudWatch Agent configuration
 ├── .gitignore                   # Excludes keys, credentials, cache
 ├── README.md                    # This file
+└── docs/
 ├── Architecture-diagram.png     # draw.io architecture diagram
 ├── ss01-iam-user.png
 ├── ss03-ec2-running.png
