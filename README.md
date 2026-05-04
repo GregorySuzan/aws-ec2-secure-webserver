@@ -23,7 +23,7 @@ The entire stack is reproducible via a single CloudFormation template.
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](/Architecture-diagram.png)
+![Architecture Diagram](architecture-diagram.png)
 
 > 📐 Built with eraser.io
 ---
